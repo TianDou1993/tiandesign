@@ -29,12 +29,16 @@ class App extends Component{
       searchTerm:'',
       hintText:'',
       gif:null,
-      gifs:[]
+      gifs:[],
+      loading:false
     };
   }
 
 // fetch giphy API using async functions
 searchGiphy = async searchTerm =>{
+  this.setState({
+    loading:true
+  })
   // first we try out fetch
   try{
     const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=XZJLFc9eUZKCbiOTYFx46TIORFgsZc9A&q=${searchTerm}&limit=25&offset=0&rating=PG-13&lang=en`);
@@ -48,7 +52,9 @@ searchGiphy = async searchTerm =>{
       ...prevState,
       gif:randomGif,
       // here we spread out all our previous gifs and add our new random gif
-      gifs:[...prevState.gifs,randomGif]
+      gifs:[...prevState.gifs,randomGif],
+      // this is for the spinner
+      loading:false
     }))
   // if fetch fails, we catch it down here
   }catch(error){
