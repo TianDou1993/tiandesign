@@ -5,7 +5,7 @@ import Gif from './Gif.js';
 
 const Header=()=>(
   <div className="header grid">
-    <h1 className="title">Tian</h1>
+    <h1 className="title">Tian Dou</h1>
   </div>
 )
 
