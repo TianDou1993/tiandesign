@@ -97,9 +97,9 @@ searchGiphy = async searchTerm =>{
         <Header/>
         <div className="search grid">
 {/* stack all the  */}
-        {this.state.gifs.map(gif=>(
+        {this.state.gifs.map((gif, index) =>(
           // seperate the component in a new file. spread all proprtities
-          <Gif {...gif}/>
+          <Gif {...gif} key={{index}}/>
         ))}
 
           {/* below is using && to test.only renderour video we the gif is not empty to prevent error when the page is first loaded */}
